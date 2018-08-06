@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Emaily express server",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardwilbur/fullstack.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +17,8 @@
     "prettier": "^1.14.0"
   },
   "devDependencies": {
-    "eslint": "^5.3.0"
+    "eslint": "^5.3.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2"
   }
 }
