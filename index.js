@@ -5,4 +5,7 @@ app.get('/', (req, res) => {
   res.send({ hi: 'there' });
 });
 
-app.listen(5000);
+// Heroku and other service providers may specify the port
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT);

@@ -7,8 +7,12 @@
     "type": "git",
     "url": "https://github.com/richardwilbur/fullstack.git"
   },
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.2.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
