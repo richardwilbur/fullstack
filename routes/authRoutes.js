@@ -11,4 +11,17 @@ module.exports = app => {
   // When the user comes back, passport will take the code parameter that is in
   // the callback URL and make a call back to Google for the user's info
   app.get('/auth/google/callback', passport.authenticate('google'));
+
+  // Passport attaches a logout function to req. After logout, user is no longer
+  // available, and returns null
+  app.get('/api/logout', (req, res) => {
+    req.logout();
+    res.send(req.user);
+  });
+
+  // Passport flow adds user to req
+  app.get('/api/current_user', (req, res) => {
+    // res.send(req.session);
+    res.send(req.user);
+  });
 };
