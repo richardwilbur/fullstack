@@ -20,12 +20,16 @@ passport.deserializeUser((id, done) => {
 
 // callbackURL is where Google is to direct the user to after user authorizes app
 // The strategy will be internally associated with the name 'google'
+// For deploying on Heroku, we need to trust it as a proxy, or provide a full
+// callbackURL rather than a relative path. Otherwise, it will drop the https,
+// and try to call the callback URL using http and get a mismatch error
 passport.use(
   new GoogleStrategy(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       // On successful authentication, an access token and will be made available
