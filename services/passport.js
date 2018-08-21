@@ -31,21 +31,21 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // On successful authentication, an access token and will be made available
       // to us. Use the profile's id to look up the user in the database
       // Call done() with the user instance when we have found or created the user
       // First argument to done function is for any error that may have occurred
       // Note: findOne returns null if not found
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+
+      const user = await new User({ googleId: profile.id }).save();
+
+      done(null, user);
     }
   )
 );
