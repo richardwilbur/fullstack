@@ -20,6 +20,7 @@ module.exports = app => {
   });
 
   // Passport flow adds user to req
+  // We can call this from the client to determine whether a user is logged in
   app.get('/api/current_user', (req, res) => {
     // res.send(req.session);
     res.send(req.user);
