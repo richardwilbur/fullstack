@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_USER } from './types';
 
-const fetchUser = () => {
+export const fetchUser = () => {
   // Redux Thunk will see that we returned a function. It will then call the
   // function, passing it the dispatch function, which we can call when we are
   // done
